@@ -1,0 +1,75 @@
+From 0cc3a812f6bda73078d5ff60897fc697ec55281b Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 14 Sep 2024 16:46:46 +0800
+Subject: [PATCH] install
+
+---
+ luckybackup.pro          | 18 +++++++++---------
+ menu/luckybackup.desktop |  4 ++--
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/luckybackup.pro b/luckybackup.pro
+index 742d4e4..651a93b 100644
+--- a/luckybackup.pro
++++ b/luckybackup.pro
+@@ -14,31 +14,31 @@ QMAKE_STRIP = echo
+ 
+ VERSION = 0.5.0
+ 
+-target.path = /usr/bin
++target.path = $$PREFIX/bin
+ TARGET = luckybackup
+ 
+-menu.path = /usr/share/applications
++menu.path = $$PREFIX/share/applications
+ menu.files = menu/luckybackup.desktop menu/luckybackup-su.desktop
+ 
+-polkit.path = /usr/share/polkit-1/actions
++polkit.path = $$PREFIX/share/polkit-1/actions
+ polkit.files = menu/net.luckybackup.su.policy
+ 
+-polkitscript.path = /usr/bin
++polkitscript.path = $$PREFIX/bin
+ polkitscript.files = menu/luckybackup-pkexec
+ 
+-pixmap.path = /usr/share/pixmaps
++pixmap.path = $$PREFIX/share/icons/hicolor/apps/
+ pixmap.files = menu/luckybackup.xpm menu/luckybackup.png
+ 
+-documentation.path = /usr/share/doc/luckybackup
++documentation.path = $$PREFIX/share/doc/luckybackup
+ documentation.files = manual
+ 
+-manpage.path = /usr/share/man/man8
++manpage.path = $$PREFIX/share/man/man8
+ manpage.files = manpage/luckybackup.8.gz manpage/luckybackup-pkexec.8
+ 
+-translations.path = /usr/share/luckybackup
++translations.path = $$PREFIX/share/luckybackup
+ translations.files = translations
+ 
+-license.path = /usr/share/doc/luckybackup
++license.path = $$PREFIX/share/doc/luckybackup
+ license.files = license
+ 
+ INSTALLS += target menu polkit polkitscript pixmap documentation manpage translations license
+diff --git a/menu/luckybackup.desktop b/menu/luckybackup.desktop
+index 5a72673..fd6e59b 100644
+--- a/menu/luckybackup.desktop
++++ b/menu/luckybackup.desktop
+@@ -89,10 +89,10 @@ Comment[es]=Respalda y sincroniza tus datos con el poder de rsync
+ Comment[sv]=Säkerhetskopiera och synkronisera din data med hjälp av rsync
+ Comment[tr]=rsync gücüyle verinizi yedekleyin & şipşaklayın
+ Comment[vi]=Backup & sync your data with the power of rsync
+-Exec=/usr/bin/luckybackup
++Exec=luckybackup
+ Terminal=false
+ Type=Application
+-Icon=/usr/share/pixmaps/luckybackup.png
++Icon=luckybackup
+ StartupNotify=true
+ Categories=KDE;Qt;Utility;
+ Keywords=rsync;backup;restore;data;synchronization;safety;
+-- 
+2.43.4
+

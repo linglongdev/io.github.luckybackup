@@ -1,0 +1,28 @@
+version: "1"
+
+package:
+  id: io.github.luckybackup
+  name: luckybackup
+  version: 2.3.1.1
+  kind: app
+  description: |
+    a backup programme
+
+command:
+  - /opt/apps/io.github.luckybackup/files/bin/luckybackup
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/TeLLie/luckybackup-os2.git
+    version: master
+    commit: b1a90c9a104e0bcdc33f880e66a2781fcf9c3fd3
+
+build: |
+  cd /project/linglong/sources/luckybackup-os2.git
+  git apply ../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
